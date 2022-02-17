@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: hsl(222, 26%, 31%);
+    font-family: 'Spartan', sans-serif;
+}
+
+.header {
+    width: 20rem;
+    height: 1.5rem;
+    margin: 5rem auto 2rem auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.theme-btns button {
+    border-radius: 80%;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.result {
+    width: 20rem;
+    height: 3.5rem;
+    margin: 2rem auto 2rem auto;
+    font-size: 3rem;
+    text-align: end;
+    border-radius: 5%;
+    background-color: hsl(224, 36%, 15%);
+    color: white;
+}
+
+#result {
+    width: 20rem;
+    height: 4rem;
+    background-color: hsl(224, 36%, 15%);
+    color: white;
+    font-size: 3rem;
+    font-weight: 200;
+}
+
+.keypad {
+    width: 20rem;
+    height: 23rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: hsl(223, 94%, 13%);
+}
+
+.keypad-grid {
+    width: 18rem;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+}
+
+.btn-number {
+    background-color: hsl(30, 25%, 89%);
+    border-radius: 6px;
+    font-size: 32px;
+    padding: 8px;
+    cursor: pointer;
+    font-family: 'Spartan', sans-serif;
+}
+
+#DEL {
+    background-color: hsl(6, 89%, 40%);
+}
+
+#RESET {
+    background-color: hsl(225, 21%, 49%);
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#EQUAL {
+    background-color: hsl(225, 21%, 49%);
+    grid-column-start: 3;
+    grid-column-end: -1;
+}

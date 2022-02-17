@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" id="theme" type="text/css" href="estilo1.css">
+    <title>Aplicativo de calculadora</title>
+
+
+
+</head>
+
+<body>
+
+
+    <header class="header">
+        <h4>Calculadora</h4>
+        <div class="theme-btns">
+            <button type="button" class="btn-theme" onclick="toggleTheme('estilo1.css')"></button>
+            <button type="button" class="btn-theme" onclick="toggleTheme('estilo2.css')"></button>
+        </div>
+    </header>
+    <section class="result">
+        <input type="text" name="result" id="result">
+    </section>
+    <section class="keypad">
+        <section class="keypad-grid">
+            <button class="btn-number" data-num>7</button>
+            <button class="btn-number" data-num>8</button>
+            <button class="btn-number" data-num>9</button>
+            <button class="btn-number" id="DEL">DEL</button>
+            <button class="btn-number" data-num>4</button>
+            <button class="btn-number" data-num>5</button>
+            <button class="btn-number" data-num>6</button>
+            <button class="btn-number" data-op>+</button>
+            <button class="btn-number" data-num>1</button>
+            <button class="btn-number" data-num>2</button>
+            <button class="btn-number" data-num>3</button>
+            <button class="btn-number" data-op>-</button>
+            <button class="btn-number" data-num>.</button>
+            <button class="btn-number" data-num>0</button>
+            <button class="btn-number" data-op>/</button>
+            <button class="btn-number" data-op>X</button>
+            <button class="btn-number" id="RESET">C</button>
+            <button class="btn-number" id="EQUAL">=</button>
+
+        </section>
+    </section>
+
+    <script>
+        function toggleTheme(value) {
+            var sheets = document.getElementsByTagName('link')
+            sheets[1].href = value
+        }
+        let result = document.getElementById('result')
+        buttons = document.querySelectorAll('button')
+        let screenValue = ''
+        for (item of buttons) {
+            item.addEventListener('click', (e) => {
+                buttonText = e.target.innerText
+
+                if (buttonText === 'X') {
+                    buttonText = '*'
+                    screenValue += buttonText
+                    result.value = screenValue
+
+                } else if (buttonText === "RESET") {
+                    screenValue = ""
+                    result.value = screenValue
+                } else if (buttonText === "=") {
+                    result.value = eval(screenValue)
+                } else if (buttonText === 'DEL') {
+                    screenValue = screenValue.toString().slice(0, -1)
+                    result.value = screenValue
+                } else {
+                    screenValue += buttonText
+                    result.value = screenValue
+                }
+            })
+
+        }
+        const Numbers = document.querySelectorAll('[data-num]');
+        const Operations = document.querySelectorAll('[data-op]');
+        const equal = document.querySelector('#EQUAL');
+        const reset = document.querySelector('#RESET');
+        const del = document.querySelector('#DEL');
+        document.addEventListener('keydown', function(e) {
+            Numbers.forEach(num => {
+                if (num.innerHTML === event.key) {
+                    num.click()
+                }
+            })
+            Operations.forEach(op => {
+                if (op.innerHTML === event.key) {
+                    op.click()
+                } else if (op.innerHTML === "X" && event.key === '*') {
+                    op.click()
+                }
+            })
+            if (event.key === 'Backspace') {
+                del.click()
+            }
+            if (event.key === 'Enter') {
+                equal.click()
+            }
+        })
+    </script>
+</body>
+
+</html>
